@@ -1,3 +1,5 @@
+import type { AbstractRecurrenceClassDefinition } from '../Task/AbstractRecurrence';
+
 /**
  * Tasks API v1 interface
  */
@@ -19,4 +21,11 @@ export interface TasksApiV1 {
      *          if a recurring task was completed.
      */
     executeToggleTaskDoneCommand: (line: string, path: string) => string;
+
+    /**
+     * Adds a custom recurrence.
+     *
+     * @param customRecurrence A subclass of AbstractRecurrence, that also implements a static method `fromText`.
+     */
+    addCustomRecurrence: (customRecurrence: AbstractRecurrenceClassDefinition) => void;
 }

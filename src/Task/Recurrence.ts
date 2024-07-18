@@ -4,13 +4,11 @@ import type { Moment } from 'moment';
 
 import { RRule } from 'rrule';
 import { compareByDate } from '../lib/DateTools';
+import { AbstractRecurrence } from './AbstractRecurrence';
 
-export class Recurrence {
+export class Recurrence extends AbstractRecurrence {
     private readonly rrule: RRule;
     private readonly baseOnToday: boolean;
-    private readonly startDate: Moment | null;
-    private readonly scheduledDate: Moment | null;
-    private readonly dueDate: Moment | null;
 
     /**
      * The reference date is used to calculate future occurrences.
@@ -42,12 +40,14 @@ export class Recurrence {
         scheduledDate: Moment | null;
         dueDate: Moment | null;
     }) {
+        super({
+            startDate,
+            dueDate,
+            scheduledDate,
+        });
         this.rrule = rrule;
         this.baseOnToday = baseOnToday;
         this.referenceDate = referenceDate;
-        this.startDate = startDate;
-        this.scheduledDate = scheduledDate;
-        this.dueDate = dueDate;
     }
 
     public static fromText({
@@ -125,11 +125,7 @@ export class Recurrence {
      *
      * @param today - Optional date representing the completion date. Defaults to today.
      */
-    public next(today = window.moment()): {
-        startDate: Moment | null;
-        scheduledDate: Moment | null;
-        dueDate: Moment | null;
-    } | null {
+    public next(today = window.moment()): Recurrence | null {
         const next = this.nextReferenceDate(today);
 
         if (next !== null) {
@@ -168,11 +164,14 @@ export class Recurrence {
                 }
             }
 
-            return {
-                startDate,
-                scheduledDate,
-                dueDate,
-            };
+            return new Recurrence({
+                rrule: this.rrule,
+                referenceDate: this.referenceDate,
+                scheduledDate: scheduledDate,
+                startDate: startDate,
+                baseOnToday: this.baseOnToday,
+                dueDate: dueDate,
+            });
         }
 
         return null;
