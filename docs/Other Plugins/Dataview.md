@@ -4,15 +4,6 @@ publish: true
 
 # Combining Dataview and Tasks
 
-<span class="related-pages">#plugin/dataview #task-format/dataview </span>
-
-## Tasks and dataview
-
-> [!released]
-> Parsing of dataview format was introduced in Tasks 3.3.0.
-
-Tasks now has partial support for reading data in [[Dataview Format]].
-
 ## Increasing Dataview compatibility with Tasks
 
 The [Dataview](https://github.com/blacksmithgu/obsidian-dataview) plugin provides many data analysis features for Obsidian vaults, including queries about tasks.

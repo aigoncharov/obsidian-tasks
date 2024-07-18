@@ -42,22 +42,6 @@ classDef TASK        stroke-width:3px,font-family:monospace;
 linkStyle default stroke:gray
 ```
 
-### Dataview format sample
-
-In Dataview format, the above would be written as:
-
-```mermaid
-flowchart BT
-
-classDef TASK        stroke-width:3px,font-family:monospace;
-
-2["- [ ] do this first&nbsp;&nbsp;[id:: abcdef]"]:::TASK
-1["- [ ] do this after first&nbsp;&nbsp;[dependsOn:: abcdef]"]:::TASK
-1-- depends on --> 2
-
-linkStyle default stroke:gray
-```
-
 ## Defining dependencies
 
 ### `id`

@@ -43,10 +43,6 @@ This page gathers together all the documentation on known limitations of the plu
 
 ![[Tasks Emoji Format#Limitations of Tasks Emoji Format]]
 
-## Writing Tasks: Dataview Format
-
-![[Dataview Format#Limitations of Dataview Format]]
-
 ## Writing Tasks: Using filename as default date
 
 ![[Use Filename as Default Date#Limitations]]
