@@ -1,16 +1,10 @@
-import {
-    DEFAULT_MAX_GENERIC_SUGGESTIONS,
-    makeDefaultSuggestionBuilder,
-    onlySuggestIfBracketOpen,
-} from '../Suggestor/Suggestor';
+import { DEFAULT_MAX_GENERIC_SUGGESTIONS, makeDefaultSuggestionBuilder } from '../Suggestor/Suggestor';
 import { DEFAULT_SYMBOLS } from '../TaskSerializer/DefaultTaskSerializer';
-import { DATAVIEW_SYMBOLS } from '../TaskSerializer/DataviewTaskSerializer';
 import { StatusConfiguration } from '../Statuses/StatusConfiguration';
 import { Status } from '../Statuses/Status';
 import { DefaultTaskSerializer, type TaskSerializer } from '../TaskSerializer';
 import type { SuggestionBuilder } from '../Suggestor';
 import type { LogOptions } from '../lib/logging';
-import { DataviewTaskSerializer } from '../TaskSerializer/DataviewTaskSerializer';
 import { DebugSettings } from './DebugSettings';
 import { StatusSettings } from './StatusSettings';
 import { Feature } from './Feature';
@@ -43,17 +37,6 @@ export const TASK_FORMATS = {
         displayName: 'Tasks Emoji Format',
         taskSerializer: new DefaultTaskSerializer(DEFAULT_SYMBOLS),
         buildSuggestions: makeDefaultSuggestionBuilder(DEFAULT_SYMBOLS, DEFAULT_MAX_GENERIC_SUGGESTIONS, false),
-    },
-    dataview: {
-        displayName: 'Dataview',
-        taskSerializer: new DataviewTaskSerializer(),
-        buildSuggestions: onlySuggestIfBracketOpen(
-            makeDefaultSuggestionBuilder(DATAVIEW_SYMBOLS, DEFAULT_MAX_GENERIC_SUGGESTIONS, true),
-            [
-                ['(', ')'],
-                ['[', ']'],
-            ],
-        ),
     },
 } as const;
 

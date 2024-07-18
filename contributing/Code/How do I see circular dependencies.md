@@ -45,7 +45,6 @@ Processed 122 files (1.2s) (15 warnings)
 1) Config/Settings.ts > Suggestor/Suggestor.ts
 2) Task.ts > Config/Settings.ts > Suggestor/Suggestor.ts
 3) Task.ts > Config/Settings.ts > Suggestor/Suggestor.ts > TaskSerializer/DefaultTaskSerializer.ts
-4) Task.ts > Config/Settings.ts > TaskSerializer/DataviewTaskSerializer.ts
 5) Task.ts > DateFallback.ts
 6) Task.ts > Scripting/TasksDate.ts
 7) Task.ts > Urgency.ts
